@@ -1,9 +1,11 @@
 import Offer from "../../components/offer/offer";
-import { Setting } from "../../const";
 
-function MainPage(): JSX.Element {
-  const offersArray = new Array(Setting.offersCount)
-  const x = [[],[],[]]
+type MainPageProps = {
+  offersCount: number;
+}
+
+function MainPage({offersCount}: MainPageProps): JSX.Element {
+  const offersArray = new Array(offersCount)
   return (
     <div className="page page--gray page--main">
       <header className="header">
