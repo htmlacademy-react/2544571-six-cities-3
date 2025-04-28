@@ -1,4 +1,9 @@
+import Offer from "../../components/offer/offer";
+import { Setting } from "../../const";
+
 function MainPage(): JSX.Element {
+  const offersArray = new Array(Setting.offersCount)
+  const x = [[],[],[]]
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -89,9 +94,7 @@ function MainPage(): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-
-                place for article
-
+              {offersArray.fill('').map(() => Offer())}
               </div>
             </section>
             <div className="cities__right-section">
