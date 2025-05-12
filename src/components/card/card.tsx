@@ -1,4 +1,11 @@
-function Card(): JSX.Element {
+import { Offer } from '../../types/offer';
+
+type CardProps = {
+  offer: Offer;
+}
+
+function Card(offer: CardProps): JSX.Element {
+  console.log(offer);
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">
