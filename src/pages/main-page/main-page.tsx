@@ -1,4 +1,4 @@
-import Card from '../../components/card/card';
+import OffersList from '../../components/offers-list/offers-list';
 import { Offers } from '../../types/offer';
 
 type MainPageProps = {
@@ -97,11 +97,7 @@ function MainPage({ offersCount, offers }: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                < Card offer={offers[0]} />
-                < Card offer={offers[0]}/>
-                < Card offer={offers[0]}/>
-                < Card offer={offers[0]}/>
-                < Card offer={offers[0]}/>
+                < OffersList offers={offers} />
               </div>
             </section>
             <div className="cities__right-section">
