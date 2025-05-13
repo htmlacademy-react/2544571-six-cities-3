@@ -5,6 +5,7 @@ function ReviewForm(): JSX.Element {
     rating: '',
     review: ''
   });
+  // console.log(userReview); // выводит содержание формы в состоянии
   return (
     <form className="reviews__form form"
       action="#"
