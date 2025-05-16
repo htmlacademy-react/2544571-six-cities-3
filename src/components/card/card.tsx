@@ -3,11 +3,16 @@ import { Offer } from '../../types/offer';
 
 type CardProps = {
   offer: Offer;
+  onHandleChangeActiveId: (id?: string) => void;
 }
 
-function Card({ offer }: CardProps): JSX.Element {
+function Card({ offer, onHandleChangeActiveId }: CardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article
+      className="cities__card place-card"
+      onMouseEnter={() => onHandleChangeActiveId(offer.id)}
+      onMouseLeave={() => onHandleChangeActiveId()}
+    >
       {offer.isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

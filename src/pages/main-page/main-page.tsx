@@ -2,6 +2,7 @@ import OffersList from '../../components/offers-list/offers-list';
 import { Offers } from '../../types/offer';
 import { AppRoute } from '../../const';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 type MainPageProps = {
   offersCount: number;
@@ -9,6 +10,13 @@ type MainPageProps = {
 }
 
 function MainPage({ offersCount, offers }: MainPageProps): JSX.Element {
+  const [activeId, setActiveId] = useState<string>();
+
+  const handleChangeActiveId = (id?: string) => setActiveId(id);
+
+  // для теста выводим в консоль и отключаем линтер
+  console.log(activeId); //eslint-disable-line no-console
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -99,8 +107,10 @@ function MainPage({ offersCount, offers }: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {/* если добавить выше onMouseEnter={(e) => console.log(e)} , то до потомков событие не доходит и не переключается между карточками... */}
-                < OffersList offers={offers} />
+                < OffersList
+                  onHandleChangeActiveId={handleChangeActiveId}
+                  offers={offers}
+                />
               </div>
             </section>
             <div className="cities__right-section">

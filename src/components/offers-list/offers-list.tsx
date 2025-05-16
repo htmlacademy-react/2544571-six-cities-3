@@ -3,15 +3,20 @@ import Card from '../card/card';
 
 type OffersListProps = {
   offers: Offers;
+  onHandleChangeActiveId: (id?: string) => void;
 }
 
-function OffersList({ offers }: OffersListProps): JSX.Element {
+function OffersList({ offers, onHandleChangeActiveId }: OffersListProps): JSX.Element {
   return (
     <>
       {offers.map((offer, id) => {
         const keyValue = `${id}-${offer.id}`;
         return (
-          <Card offer={offer} key={keyValue}/>
+          <Card
+            onHandleChangeActiveId={onHandleChangeActiveId}
+            offer={offer}
+            key={keyValue}
+          />
         );
       })}
     </>);
