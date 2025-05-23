@@ -1,5 +1,7 @@
 import { Offers } from '../../types/offer';
 import ReviewForm from '../../components/review-form/review-form';
+import Map from '../../components/map/map';
+import { CITY } from '../../mocks/city';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import { Link, useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
@@ -171,7 +173,15 @@ function OfferPage({ offers }: OfferPageProps): JSX.Element {
                 </section>
               </div>
             </div>
-            <section className="offer__map map"></section>
+            <section
+              style={{ width: '100%' }}
+              className={`${offers.length === 0 ? 'offer__map map' : ''} map`}
+            >
+              <Map
+                city={CITY}
+                offers={offers}
+              />
+            </section>
           </section>
           <div className="container">
             <section className="near-places places">
