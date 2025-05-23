@@ -116,7 +116,10 @@ function MainPage({ offersCount, offers }: MainPageProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map">
+              <section
+                style={{ width: '100%' }}
+                className={`${offers.length === 0 ? 'cities__map' : ''} map`}
+              >
                 <Map
                   city={CITY}
                   offers={offers}
