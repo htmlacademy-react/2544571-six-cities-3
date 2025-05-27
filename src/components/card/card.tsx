@@ -3,21 +3,22 @@ import { Offer } from '../../types/offer';
 
 type CardProps = {
   offer: Offer;
-  onHandleChangeActiveId: (id?: string) => void;
+  onHandleChangeActiveId?: (id?: string) => void;
+  isNearOffer: boolean;
 }
 
-function Card({ offer, onHandleChangeActiveId }: CardProps): JSX.Element {
+function Card({ offer, onHandleChangeActiveId, isNearOffer }: CardProps): JSX.Element {
   return (
     <article
-      className="cities__card place-card"
-      onMouseEnter={() => onHandleChangeActiveId(offer.id)}
-      onMouseLeave={() => onHandleChangeActiveId()}
+      className={`${isNearOffer ? 'near-places' : 'cities'}__card place-card`}
+      onMouseEnter={() => onHandleChangeActiveId && onHandleChangeActiveId(offer.id)}
+      onMouseLeave={() => onHandleChangeActiveId && onHandleChangeActiveId()}
     >
       {offer.isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
         </div> : ''}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${isNearOffer ? 'near-places' : 'cities'}__image-wrapper place-card__image-wrapper`}>
         <Link to={`offer/${offer.id}`}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
         </Link>
@@ -37,7 +38,7 @@ function Card({ offer, onHandleChangeActiveId }: CardProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
+            <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
