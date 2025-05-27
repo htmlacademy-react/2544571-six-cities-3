@@ -6,13 +6,14 @@ import { CITY } from '../../mocks/city';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import { Link, useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute , AuthorizationStatus } from '../../const';
 
 type OfferPageProps = {
   offers: Offers;
+  authorizationStatus: AuthorizationStatus;
 }
 
-function OfferPage({ offers }: OfferPageProps): JSX.Element {
+function OfferPage({ offers , authorizationStatus }: OfferPageProps): JSX.Element {
   const params = useParams();
   const offer = offers.find((innerOffer) => innerOffer.id === params.id);
 
@@ -170,7 +171,7 @@ function OfferPage({ offers }: OfferPageProps): JSX.Element {
                 <section className="offer__reviews reviews">
                   <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
                   <ReviewsList />
-                  < ReviewForm />
+                  {authorizationStatus === AuthorizationStatus.Auth && < ReviewForm />}
                 </section>
               </div>
             </div>
