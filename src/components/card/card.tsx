@@ -3,7 +3,7 @@ import { Offer } from '../../types/offer';
 
 type CardProps = {
   offer: Offer;
-  onHandleChangeActiveId: (id?: string) => void;
+  onHandleChangeActiveId?: (id?: string) => void;
   isNearOffer: boolean;
 }
 
@@ -11,8 +11,8 @@ function Card({ offer, onHandleChangeActiveId, isNearOffer }: CardProps): JSX.El
   return (
     <article
       className={`${isNearOffer ? 'near-places' : 'cities'}__card place-card`}
-      onMouseEnter={() => onHandleChangeActiveId(offer.id)}
-      onMouseLeave={() => onHandleChangeActiveId()}
+      onMouseEnter={() => onHandleChangeActiveId && onHandleChangeActiveId(offer.id)}
+      onMouseLeave={() => onHandleChangeActiveId && onHandleChangeActiveId()}
     >
       {offer.isPremium ?
         <div className="place-card__mark">

@@ -13,7 +13,6 @@ function NearOffersList({ offers}: NearOffersListProps): JSX.Element {
         const keyValue = `${id}-${offer.id}`;
         return (
           <Card
-            onHandleChangeActiveId={() => {}} // все равно приходится передавать, не сделать опциональность...
             offer={offer}
             key={keyValue}
             isNearOffer
