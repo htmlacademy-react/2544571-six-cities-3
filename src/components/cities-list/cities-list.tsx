@@ -5,7 +5,6 @@ type CitiesListProps = {
 }
 
 function CitiesList({ citiesList, selectedCity }: CitiesListProps): JSX.Element {
-  console.log(citiesList, selectedCity); //eslint-disable-line no-console
   return (
     <ul className="locations__list tabs__list">
       {citiesList.map((city, id) => {
