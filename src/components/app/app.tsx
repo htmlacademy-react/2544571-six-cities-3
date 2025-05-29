@@ -6,14 +6,22 @@ import OfferPage from '../../pages/offer-page/offer-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import PrivateRoute from '../private-route/private-route';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import { Offers } from '../../types/offer';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addOffers } from '../../store/action';
+import { offers as mockOffers } from '../../mocks/offers';
+// импортировали моковые офферы
 
 type AppProps = {
   offersCount: number;
-  offers: Offers;
 }
 
-function App({ offersCount, offers }: AppProps): JSX.Element {
+function App({ offersCount }: AppProps): JSX.Element {
+
+  const dispatch = useAppDispatch();
+  dispatch(addOffers({ offers: mockOffers }));
+  // внесли моковые офферы в состояние
+  const offers = useAppSelector((state) => state.offers);
+  // и тут же использовали офферы из состояния
   return (
     <BrowserRouter>
       <Routes>
