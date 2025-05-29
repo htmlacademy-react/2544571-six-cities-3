@@ -2,6 +2,52 @@ import { Offer } from '../types/offer';
 
 export const offers: Offer[] = [
   {
+    'id': 'a75224b0-bb6a-4c09-8269-18379944c9e8',
+    'title': 'Perfectly located Castro',
+    'type': 'room',
+    'price': 140,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.868610000000004,
+      'longitude': 2.342499,
+      'zoom': 16
+    },
+    'isFavorite': true,
+    'isPremium': false,
+    'rating': 2.5
+  },
+  {
+    'id': '46a23c22-acb3-4191-a127-b0af188bf331',
+    'title': 'Canal View Prinsengracht',
+    'type': 'room',
+    'price': 209,
+    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
+    'city': {
+      'name': 'Paris',
+      'location': {
+        'latitude': 48.85661,
+        'longitude': 2.351499,
+        'zoom': 13
+      }
+    },
+    'location': {
+      'latitude': 48.858610000000006,
+      'longitude': 2.330499,
+      'zoom': 16
+    },
+    'isFavorite': false,
+    'isPremium': true,
+    'rating': 3.8
+  },
+  {
     'id': '314769d4-5f2e-4cdb-998e-d7e38c173d34',
     'title': 'Wood and stone place',
     'type': 'room',
