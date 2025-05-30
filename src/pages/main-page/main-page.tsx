@@ -1,5 +1,4 @@
 import OffersList from '../../components/offers-list/offers-list';
-import { Offers } from '../../types/offer';
 import { AppRoute, citiesList } from '../../const';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -8,12 +7,9 @@ import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
 import CitiesList from '../../components/cities-list/cities-list';
 
-type MainPageProps = {
-  offersCount: number;
-  offers: Offers;
-}
+function MainPage(): JSX.Element {
+  const allOffers = useAppSelector((state) => state.offers);
 
-function MainPage({ offersCount, offers: allOffers }: MainPageProps): JSX.Element {
   const [activeId, setActiveId] = useState<string>();
 
   const selectedCity = useAppSelector((state) => state.city);
@@ -67,7 +63,7 @@ function MainPage({ offersCount, offers: allOffers }: MainPageProps): JSX.Elemen
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offersCount} places to stay in {selectedCity}</b>
+              <b className="places__found">{offers.length} places to stay in {selectedCity}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>

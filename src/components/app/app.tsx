@@ -9,16 +9,15 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { initOffers } from '../../store/action';
 import { offers as mockOffers } from '../../mocks/offers';
+import { useEffect } from 'react';
 // импортировали моковые офферы
 
-type AppProps = {
-  offersCount: number;
-}
-
-function App({ offersCount }: AppProps): JSX.Element {
+function App(): JSX.Element {
 
   const dispatch = useAppDispatch();
-  dispatch(initOffers({ offers: mockOffers }));
+  useEffect(() => {
+    dispatch(initOffers({ offers: mockOffers }));
+  },[dispatch]);
   // внесли моковые офферы в состояние
   const offers = useAppSelector((state) => state.offers);
   // и тут же использовали офферы из состояния
@@ -27,7 +26,7 @@ function App({ offersCount }: AppProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage offersCount={offersCount} offers={offers} />}
+          element={<MainPage/>}
         />
         <Route
           path={AppRoute.Login}
