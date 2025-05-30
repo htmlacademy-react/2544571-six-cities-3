@@ -24,9 +24,9 @@ function CitiesList({ citiesList, selectedCity }: CitiesListProps): JSX.Element 
         const keyValue = `${id}-${city}`;
         return (
           <li key={keyValue} className="locations__item">
-            <a onClick={onCityClick} className={`locations__item-link tabs__item ${city === selectedCity ? 'tabs__item--active' : ''}`}>
+            <link onClick={onCityClick} className={`locations__item-link tabs__item ${city === selectedCity ? 'tabs__item--active' : ''}`}>
               <span>{city}</span>
-            </a>
+            </link>
           </li>
         );
       })}
