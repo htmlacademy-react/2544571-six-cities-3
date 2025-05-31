@@ -1,6 +1,6 @@
 import OffersList from '../../components/offers-list/offers-list';
 import SortList from '../../components/sort-list/sort-list';
-import { AppRoute, citiesList } from '../../const';
+import { AppRoute} from '../../const';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CITIES } from '../../mocks/cities';
@@ -57,7 +57,7 @@ function MainPage(): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CitiesList citiesList={citiesList} selectedCity={selectedCity} />
+            <CitiesList citiesList={CITIES} selectedCity={selectedCity} />
           </section>
         </div>
         <div className="cities">

@@ -2,9 +2,10 @@ import { MouseEvent } from 'react';
 import { changeActiveCity } from '../../store/action';
 import { useAppDispatch } from '../../hooks';
 import { Link } from 'react-router-dom';
+import { City } from '../../types/offer';
 
 type CitiesListProps = {
-  citiesList: string[];
+  citiesList: City[];
   selectedCity: string;
 }
 
@@ -22,11 +23,11 @@ function CitiesList({ citiesList, selectedCity }: CitiesListProps): JSX.Element 
   return (
     <ul className="locations__list tabs__list">
       {citiesList.map((city, id) => {
-        const keyValue = `${id}-${city}`;
+        const keyValue = `${id}-${city.name}`;
         return (
           <li key={keyValue} className="locations__item">
-            <Link to='#' onClick={onCityClick} className={`locations__item-link tabs__item ${city === selectedCity ? 'tabs__item--active' : ''}`}>
-              <span>{city}</span>
+            <Link to='#' onClick={onCityClick} className={`locations__item-link tabs__item ${city.name === selectedCity ? 'tabs__item--active' : ''}`}>
+              <span>{city.name}</span>
             </Link>
           </li>
         );
