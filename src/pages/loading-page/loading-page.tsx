@@ -1,4 +1,5 @@
 import './style.css';
+import spinnerImage from './spinner-image.png';
 function LoadingPage(): JSX.Element {
   return (
     <div id="wrapper">
@@ -7,7 +8,7 @@ function LoadingPage(): JSX.Element {
       </div>
       <div className="loader">
         <div className="holder">
-          <img src="img/spinner-image.png" alt="loading spinner" />
+          <img src={spinnerImage} alt="loading spinner" />
           <span>Loading...</span>
         </div>
       </div>
