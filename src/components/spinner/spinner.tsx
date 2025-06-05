@@ -4,8 +4,8 @@ function Loader(): JSX.Element {
     <div id="wrapper">
       <div className="loader">
         <div className="holder">
-          <img src="img/loader-image.png" alt="loader-image" />
-          <span>Loader text</span>
+          <img src="img/spinner-image.png" alt="spinner-image" />
+          <span>some text</span>
         </div>
       </div>
     </div>);
