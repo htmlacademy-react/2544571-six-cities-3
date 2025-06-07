@@ -9,11 +9,10 @@ import Header from '../../components/header/header';
 import { mockReviews } from '../../mocks/review';
 import { useAppSelector } from '../../hooks';
 
-type OfferPageProps = {
-  authorizationStatus: AuthorizationStatus;
-}
+function OfferPage(): JSX.Element {
 
-function OfferPage({ authorizationStatus }: OfferPageProps): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
   const offers = useAppSelector((state) => state.offers);
   const params = useParams();
   const offer = offers.find((innerOffer) => innerOffer.id === params.id);

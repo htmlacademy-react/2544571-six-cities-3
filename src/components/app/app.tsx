@@ -44,7 +44,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.OfferWithId}
-          element={<OfferPage authorizationStatus={AuthorizationStatus.Auth} />}
+          element={<OfferPage/>}
         />
         <Route
           path="*"
