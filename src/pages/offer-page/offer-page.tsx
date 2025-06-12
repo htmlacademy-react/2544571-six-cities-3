@@ -4,6 +4,7 @@ import Map from '../../components/map/map';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import OfferGallery from '../../components/offer-gallery/offer-gallery';
 import LoadingPage from '../loading-page/loading-page';
 import { RequestStatus } from '../../const';
 import { Navigate } from 'react-router-dom';
@@ -66,28 +67,7 @@ function OfferPage(): JSX.Element {
 
         <main className="page__main page__main--offer">
           <section className="offer">
-            <div className="offer__gallery-container container">
-              <div className="offer__gallery">
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
-                </div>
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio" />
-                </div>
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio" />
-                </div>
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio" />
-                </div>
-                <div className="offer__image-wrapper">
-                  <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
-                </div>
-              </div>
-            </div>
+            <OfferGallery images={fullOffer.images} />
             <div className="offer__container container">
               <div className="offer__wrapper">
                 {fullOffer.isPremium &&
