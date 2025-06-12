@@ -19,6 +19,8 @@ import { offerActions } from '../../store/offer/offer';
 import { reviewsActions } from '../../store/review/review';
 import { getFullOffer, getNearByOffers, getOfferStatus } from '../../store/offer/selectors';
 
+const MAX_COUNT_NEAR_OFFERS = 3;
+
 function OfferPage(): JSX.Element {
 
   const allActions = {
@@ -57,6 +59,9 @@ function OfferPage(): JSX.Element {
   if (status === RequestStatus.Loading || !fullOffer) {
     return <LoadingPage />;
   }
+
+  const nearbyOffers = nearByOffers.slice(0, MAX_COUNT_NEAR_OFFERS);
+  const nearOffersPlusCurrent = [fullOffer, ...nearbyOffers];
 
   return (
     !fullOffer ? <Navigate to={'no-such-page'} /> :
@@ -181,7 +186,7 @@ function OfferPage(): JSX.Element {
             >
               <Map
                 city={fullOffer.city}
-                offers={nearByOffers}
+                offers={nearOffersPlusCurrent}
                 activeId={fullOffer.id}
               />
             </section>
