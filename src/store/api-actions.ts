@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state.js';
 import { Offer , FullOffer, FavoriteData} from '../types/offer.js';
 import {redirectToRoute} from './action';
+import { Review, PostCommentProps } from '../types/review.js';
 import { APIRoute, AppRoute} from '../const';
 import { saveToken, dropToken } from '../services/token';
 import { AuthData } from '../types/auth-data';
@@ -45,6 +46,18 @@ export const fetchNearByOffers = createAsyncThunk<Offer[], string,{
   },
 );
 
+export const fetchReviews = createAsyncThunk<Review[], FullOffer['id'],{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/fetchReviews',
+  async (offerId, { extra: api }) => {
+    const { data } = await api.get<Review[]>(`${APIRoute.Comments}/${offerId}`);
+    return data;
+  }
+);
+
 export const postFavorite = createAsyncThunk<Offer, FavoriteData,{
   dispatch: AppDispatch;
   state: State;
@@ -54,6 +67,18 @@ export const postFavorite = createAsyncThunk<Offer, FavoriteData,{
   async ({ id, isFavorite }, { extra: api }) => {
     const numberFavorite = Number(isFavorite);
     const { data } = await api.post<FullOffer>(`${APIRoute.Favorites}/${id}/${numberFavorite}`, { numberFavorite });
+    return data;
+  }
+);
+
+export const postReview = createAsyncThunk<Review, PostCommentProps,{
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'reviews/post',
+  async ({ body, offerId }, { extra: api }) => {
+    const { data } = await api.post<Review>(`${APIRoute.Comments}/${offerId}`, body);
     return data;
   }
 );
