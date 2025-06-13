@@ -1,4 +1,20 @@
-import {store} from '../store/index.js';
+import { store } from '../store/index.js';
+import { AuthorizationStatus } from '../const';
+import { Offer, City } from './offer.js';
+
+export type AppData = {
+  offers: Offer[];
+  isOffersDataLoading: boolean;
+};
+
+export type AppProcess = {
+  city: City;
+  userEmail: string;
+};
+
+export type UserProcess = {
+  authorizationStatus: AuthorizationStatus;
+};
 
 export type State = ReturnType<typeof store.getState>;
 
