@@ -62,7 +62,7 @@ function OfferPage(): JSX.Element {
     return <LoadingPage />;
   }
 
-  const nearbyOffers = nearByOffers.slice(0, MAX_COUNT_NEAR_OFFERS);
+  const nearbyOffers = nearByOffers && nearByOffers.slice(0, MAX_COUNT_NEAR_OFFERS);
   const nearOffersPlusCurrent = [fullOffer, ...nearbyOffers];
 
   return (
@@ -78,7 +78,7 @@ function OfferPage(): JSX.Element {
             <div className="offer__wrapper">
               <OfferContainer offer={fullOffer} />
               <section className="offer__reviews reviews">
-                {reviews.length > 0 &&
+                {reviews && reviews.length > 0 &&
                   <>
                     <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                     <ReviewsList reviews={reviews} />
