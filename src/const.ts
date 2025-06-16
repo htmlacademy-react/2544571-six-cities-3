@@ -57,6 +57,12 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum CardClass {
+  Favorites = 'favorites',
+  NearPlaces = 'near-places',
+  Cities = 'cities'
+}
+
 export enum AppRoute {
   Login = '/login',
   OfferWithId = '/offer/:id',

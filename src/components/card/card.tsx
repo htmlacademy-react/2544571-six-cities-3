@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
+import { CardClass } from '../../const';
 
 type CardProps = {
   offer: Offer;
   onHandleChangeActiveId?: (id?: string) => void;
-  isNearOffer: boolean;
+  cardClass: CardClass;
 }
 
-function Card({ offer, onHandleChangeActiveId, isNearOffer }: CardProps): JSX.Element {
+function Card({ offer, onHandleChangeActiveId, cardClass }: CardProps): JSX.Element {
+  const isFavorite = cardClass === CardClass.Favorites;
   return (
     <article
-      className={`${isNearOffer ? 'near-places' : 'cities'}__card place-card`}
+      className={`${cardClass}__card place-card`}
       onMouseEnter={() => onHandleChangeActiveId && onHandleChangeActiveId(offer.id)}
       onMouseLeave={() => onHandleChangeActiveId && onHandleChangeActiveId()}
     >
@@ -18,9 +20,9 @@ function Card({ offer, onHandleChangeActiveId, isNearOffer }: CardProps): JSX.El
         <div className="place-card__mark">
           <span>Premium</span>
         </div> : ''}
-      <div className={`${isNearOffer ? 'near-places' : 'cities'}__image-wrapper place-card__image-wrapper`}>
+      <div className={`${cardClass}__image-wrapper place-card__image-wrapper`}>
         <Link to={`offer/${offer.id}`}>
-          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={offer.previewImage} width={isFavorite ? '150' : '260'} height={isFavorite ? '110' : '200'} alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
