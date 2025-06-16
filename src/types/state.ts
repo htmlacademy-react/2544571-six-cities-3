@@ -1,10 +1,11 @@
 import { store } from '../store/index.js';
 import { AuthorizationStatus } from '../const';
 import { Offer, City } from './offer.js';
+import { RequestStatus } from '../const';
 
 export type AppData = {
   offers: Offer[];
-  isOffersDataLoading: boolean;
+  status: RequestStatus;
 };
 
 export type AppProcess = {

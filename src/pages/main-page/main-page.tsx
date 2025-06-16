@@ -11,6 +11,11 @@ import { Offer } from '../../types/offer';
 import MainEmpty from '../../components/main-empty/main-empty';
 import { getOffers } from '../../store/app-data/selectors';
 import { getCity } from '../../store/app-process/selectors';
+import { offersActions } from '../../store/app-data/app-data';
+import { useActionCreators } from '../../hooks/store';
+import { RequestStatus } from '../../const';
+import { getStatus } from '../../store/app-data/selectors';
+import { useEffect } from 'react';
 
 function MainPage(): JSX.Element {
   const selectedCity = useAppSelector(getCity);
@@ -36,6 +41,16 @@ function MainPage(): JSX.Element {
   const [activeId, setActiveId] = useState<string>();
 
   const handleChangeActiveId = (id?: string) => setActiveId(id);
+
+  const status = useAppSelector(getStatus);
+
+  const { fetchOffersAction } = useActionCreators(offersActions);
+
+  useEffect(() => {
+    if (status === RequestStatus.Idle) {
+      fetchOffersAction();
+    }
+  }, [status, fetchOffersAction]);
 
   return (
     <div className="page page--gray page--main">
