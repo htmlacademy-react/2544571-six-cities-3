@@ -3,17 +3,15 @@ import Header from '../../components/header/header';
 import { Offer } from '../../types/offer';
 import { useAppSelector } from '../../hooks';
 import FavoritesEmpty from '../../components/favorites-empty/favorites-empty';
-import { getOffers } from '../../store/app-data/selectors';
+import { getFavorites } from '../../store/favorites/selectors';
 import { CardClass } from '../../const';
 import Card from '../../components/card/card';
 
 function FavoritesPage(): JSX.Element {
-  const offers = useAppSelector(getOffers);
-
-  const filteredOffers = offers.filter((offer) => offer.isFavorite === true);
+  const offers = useAppSelector(getFavorites);
 
   const uniqCities: string[] = [];
-  filteredOffers.forEach((element: Offer) => {
+  offers.forEach((element: Offer) => {
     if (element.city.name !== uniqCities[uniqCities.length - 1]) {
       uniqCities.push(element.city.name);
     }
@@ -26,7 +24,8 @@ function FavoritesPage(): JSX.Element {
       <header className="header">
         <Header />
       </header>
-      {filteredOffers.length === 0 ? <FavoritesEmpty /> :
+      {offers.length === 0 && <FavoritesEmpty />}
+      {offers.length > 0 &&
         <main className="page__main page__main--favorites">
           <div className="page__favorites-container container">
             <section className="favorites">
@@ -44,7 +43,7 @@ function FavoritesPage(): JSX.Element {
                         </div>
                       </div>
                       <div className="favorites__places">
-                        {filteredOffers.filter((offer) => offer.city.name === city).map((offer, offerId) => {
+                        {offers.filter((offer) => offer.city.name === city).map((offer, offerId) => {
                           const keyOffer = `${offerId}-${offer.id}`;
                           return (
                             <Card
