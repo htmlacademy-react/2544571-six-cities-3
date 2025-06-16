@@ -51,33 +51,35 @@ function MainPage(): JSX.Element {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            {offers.length === 0 ? <MainEmpty selectedCityName={selectedCity.name} /> :
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in {selectedCity.name}</b>
-                <SortList current={activeSort} setter={setActiveSort} />
-                <div className="cities__places-list places__list tabs__content">
-                  < OffersList
-                    onHandleChangeActiveId={handleChangeActiveId}
-                    offers={sortedOffers}
-                  />
+          <div className={`cities__places-container ${(offers.length === 0) ? 'cities__places-container--empty' : ''} container`}>
+            {(offers.length === 0) && <MainEmpty selectedCityName={selectedCity.name} />}
+            {(offers.length > 0) &&
+              <>
+                <section className="cities__places places">
+                  <h2 className="visually-hidden">Places</h2>
+                  <b className="places__found">{offers.length} places to stay in {selectedCity.name}</b>
+                  <SortList current={activeSort} setter={setActiveSort} />
+                  <div className="cities__places-list places__list tabs__content">
+                    < OffersList
+                      onHandleChangeActiveId={handleChangeActiveId}
+                      offers={sortedOffers}
+                    />
+                  </div>
+                </section>
+                <div className="cities__right-section">
+                  <section
+                    style={{ width: '100%' }}
+                    className={`${offers.length === 0 ? 'cities__map' : ''} map`}
+                  >
+                    {offers.length === 0 ? '' :
+                      <Map
+                        city={selectedCity}
+                        offers={offers}
+                        activeId={activeId}
+                      />}
+                  </section>
                 </div>
-              </section>}
-            <div className="cities__right-section">
-              <section
-                style={{ width: '100%' }}
-                className={`${offers.length === 0 ? 'cities__map' : ''} map`}
-              >
-                {offers.length === 0 ? '' :
-                  <Map
-                    city={selectedCity}
-                    offers={offers}
-                    activeId={activeId}
-                  />}
-
-              </section>
-            </div>
+              </>}
           </div>
         </div>
       </main>
