@@ -1,7 +1,8 @@
-import { store } from '../store/index.js';
+import { store } from '../store/index';
 import { AuthorizationStatus } from '../const';
-import { Offer, City } from './offer.js';
+import { Offer, City } from './offer';
 import { RequestStatus } from '../const';
+import { UserData } from './user-data';
 
 export type AppData = {
   offers: Offer[];
@@ -10,11 +11,11 @@ export type AppData = {
 
 export type AppProcess = {
   city: City;
-  userEmail: string;
 };
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
+  userData: UserData | null;
 };
 
 export type State = ReturnType<typeof store.getState>;

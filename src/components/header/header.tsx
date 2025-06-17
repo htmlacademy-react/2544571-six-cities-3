@@ -4,11 +4,11 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import { getUserEmail } from '../../store/app-process/selectors';
+import { getUserData } from '../../store/user-process/selectors';
 
 function Header(): JSX.Element {
   const authenticationStatus = useAppSelector(getAuthorizationStatus);
-  const userEmail = useAppSelector(getUserEmail);
+  const userData = useAppSelector(getUserData);
 
   const dispatch = useAppDispatch();
 
@@ -36,7 +36,7 @@ function Header(): JSX.Element {
                   <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Favorites}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
-                    <span className="header__user-name user__name">{userEmail}</span>
+                    <span className="header__user-name user__name">{userData?.email}</span>
                     <span className="header__favorite-count">3</span>
                   </Link>
                 </li>
