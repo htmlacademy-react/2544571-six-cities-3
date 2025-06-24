@@ -13,6 +13,7 @@ import browserHistory from '../../browser-history';
 import { getAuthorizationStatus, getAuthCheckedStatus } from '../../store/user-process/selectors';
 import { getStatus } from '../../store/app-data/selectors';
 import { RequestStatus } from '../../const';
+import PublicRoute from '../public-route/public-route';
 
 function App(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
@@ -34,7 +35,13 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Login}
-          element={<LoginPage />}
+          element={
+            <PublicRoute
+              authorizationStatus={authorizationStatus}
+            >
+              <LoginPage />
+            </PublicRoute>
+          }
         />
         <Route
           path={AppRoute.Favorites}
@@ -48,7 +55,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.OfferWithId}
-          element={<OfferPage/>}
+          element={<OfferPage />}
         />
         <Route
           path="*"
