@@ -10,6 +10,8 @@ type CardProps = {
   cardClass: CardClass;
 }
 
+const STARS_STYLE_COEFF = 20;
+
 function Card({ offer, onHandleChangeActiveId, cardClass }: CardProps): JSX.Element {
   const isFavorite = cardClass === CardClass.Favorites;
   return (
@@ -37,7 +39,7 @@ function Card({ offer, onHandleChangeActiveId, cardClass }: CardProps): JSX.Elem
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
+            <span style={{ width: `${Math.round(offer.rating) * STARS_STYLE_COEFF}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
