@@ -3,6 +3,7 @@ import { Offer } from '../../types/offer';
 import { CardClass } from '../../const';
 import Bookmark from '../bookmark/bookmark';
 import { BookmarkClass } from '../../const';
+import { capitalizeFirst } from '../../utils';
 
 type CardProps = {
   offer: Offer;
@@ -46,7 +47,7 @@ function Card({ offer, onHandleChangeActiveId, cardClass }: CardProps): JSX.Elem
         <h2 className="place-card__name">
           <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{offer.type}</p>
+        <p className="place-card__type">{capitalizeFirst(offer.type)}</p>
       </div>
     </article>);
 }
