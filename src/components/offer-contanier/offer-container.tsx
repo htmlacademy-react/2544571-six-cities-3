@@ -3,6 +3,7 @@ import { FullOffer } from '../../types/offer';
 import { memo } from 'react';
 import Bookmark from '../bookmark/bookmark';
 import { BookmarkClass } from '../../const';
+import { capitalizeFirst } from '../../utils';
 
 type OfferContainerProps = {
   offer: FullOffer;
@@ -37,7 +38,7 @@ function OfferContainer_({ offer }: OfferContainerProps): JSX.Element {
       </div>
       <ul className="offer__features">
         <li className="offer__feature offer__feature--entire">
-          {type}
+          {capitalizeFirst(type)}
         </li>
         <li className="offer__feature offer__feature--bedrooms">
           {bedrooms > 1 ? `${bedrooms} Bedrooms` : `${bedrooms} Bedroom`}
